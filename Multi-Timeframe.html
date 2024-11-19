@@ -184,7 +184,7 @@
       </div>
    
       <script>
-         var options = ["XAU", "CAD", "CHF", "EUR", "GBP", "USD", "AUD", "NZD", "JPY"];
+         var options = ["XAU", "CAD", "CHF", "EUR", "GBP", "AUD", "NZD", "JPY","XAG", "USD","US30",""];
    
          function populateDropdowns() {
             var dropdown1 = document.getElementById("dropdown1");
@@ -226,6 +226,10 @@
             var selectedValue2 = dropdown2.value;
             for (var i = 0; i < dropdown1.options.length; i++) {
                dropdown1.options[i].disabled = (dropdown1.options[i].value === selectedValue2);
+            }
+
+            if(selectedValue1.length > 3){
+               dropdown2.value = "";
             }
          }
    
