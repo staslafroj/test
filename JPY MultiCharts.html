@@ -20,6 +20,8 @@
       const params = new URLSearchParams(window.location.search);
       var paramTimeframe =  params.get('timeframe') ? params.get('timeframe').toUpperCase() : null;
       paramTimeframe = paramTimeframe ? paramTimeframe : '5';
+      var paramVolume =  params.get('volume') ? params.get('volume').toUpperCase() : null;
+      paramVolume = (paramVolume ? paramVolume : 'YES') == 'YES' ? false : true;
       document.title = currentSymbol + " Multi-Chart";
    </script>
       <section class="text-content">
@@ -40,7 +42,7 @@
                     "withdateranges": true,
                     "allow_symbol_change": true,
                     "hideideas": true,
-					"hide_volume": true,
+					"hide_volume": paramVolume,
 					"save_image": false,
                   });
                </script>
@@ -62,7 +64,7 @@
                     "withdateranges": true,
                     "allow_symbol_change": true,
                     "hideideas": true,
-					"hide_volume": true,
+					"hide_volume": paramVolume,
 					"save_image": false,
                   });
                </script>
@@ -88,7 +90,7 @@
                     "withdateranges": true,
                     "allow_symbol_change": true,
                     "hideideas": true,
-					"hide_volume": true,
+					"hide_volume": paramVolume,
 					"save_image": false,
                   });
                </script>
@@ -111,7 +113,7 @@
                     "withdateranges": true,
                     "allow_symbol_change": true,
                     "hideideas": true,
-					"hide_volume": true,
+					"hide_volume": paramVolume,
 					"save_image": false,
                   });
                </script>
@@ -140,7 +142,7 @@
                     "withdateranges": true,
                     "allow_symbol_change": true,
                     "hideideas": true,
-					"hide_volume": true,
+					"hide_volume": paramVolume,
 					"save_image": false,
                   });
                </script>
@@ -162,7 +164,7 @@
                     "withdateranges": true,
                     "allow_symbol_change": true,
                     "hideideas": true,
-					"hide_volume": true,
+					"hide_volume": paramVolume,
 					"save_image": false,
                   });
                </script>
@@ -189,7 +191,7 @@
                     "withdateranges": true,
                     "allow_symbol_change": true,
                     "hideideas": true,
-					"hide_volume": true,
+					"hide_volume": paramVolume,
 					"save_image": false,
                   });
                </script>
@@ -211,7 +213,7 @@
                     "withdateranges": true,
                     "allow_symbol_change": true,
                     "hideideas": true,
-					"hide_volume": true,
+					"hide_volume": paramVolume,
 					"save_image": false,
                   });
                </script>
@@ -221,18 +223,25 @@
       </section>
 
       <div class="top-right-corner" style="position: fixed; top: 0; right: 0; margin: 5px; background-color: #33495f; padding: 5px; border: 1px solid #dee2e6;">
-         <select id="dropdown1" name="dropdown1""></select>
-         <select id="dropdown2" name="dropdown2""></select>
-         <button onclick="combineAndRedirect()">Go</button>
+         <div>
+            <select id="dropdown1" name="dropdown1""></select>
+            <select id="dropdown2" name="dropdown2""></select>
+            <button onclick="combineAndRedirect()">Go</button>
+         </div>
+         <div style="color: white;">
+            Volume <select id="dropdown3" name="dropdown3""></select>
+         </div>
       </div>
    
       <script>
          var options1 = ["XAU", "CAD", "CHF", "EUR", "GBP", "AUD", "NZD", "JPY", "USD"];
          var options2 = ["1", "5", "15", "30", "1H", "4H", "1D", "1W"];
+         var options3 = ["Yes", "No"];
    
          function populateDropdowns() {
             var dropdown1 = document.getElementById("dropdown1");
             var dropdown2 = document.getElementById("dropdown2");
+            var dropdown3 = document.getElementById("dropdown3");
 
             options1.forEach(function (option) {
                var opt1 = document.createElement("option");
@@ -246,20 +255,29 @@
                opt2.text = option;
                dropdown2.add(opt2);
             });
+            options3.forEach(function (option) {
+               var opt3 = document.createElement("option");
+               opt3.value = option;
+               opt3.text = option;
+               dropdown3.add(opt3);
+            });
    
             dropdown1.value = currentSymbol;
             dropdown2.value = paramTimeframe;
+            dropdown3.value = paramVolume ? "No" : "Yes";
          }
    
          function combineAndRedirect() {
             var dropdown1 = document.getElementById("dropdown1");
             var dropdown2 = document.getElementById("dropdown2");
+            var dropdown3 = document.getElementById("dropdown3");
             var value1 = dropdown1.value;
             var value2 = dropdown2.value;
+            var value3 = dropdown3.value;
 
             if(currentSymbol){
                var currentUrl = window.location.origin + window.location.pathname;
-               var newUrl = currentUrl.replace(currentSymbol, value1)+"?timeframe="+value2;
+               var newUrl = currentUrl.replace(currentSymbol, value1)+"?timeframe="+value2+"&volume="+value3;
                window.location.href = newUrl;
             }           
          }
