@@ -15,6 +15,8 @@
       paramTimeframe2 = paramTimeframe2 ? paramTimeframe2 : '15';
       var paramVolume =  params.get('volume') ? params.get('volume').toUpperCase() : null;
       paramVolume = (paramVolume ? paramVolume : 'YES') == 'YES' ? false : true;
+      var paramShowHide =  params.get('showhide') ? params.get('showhide').toUpperCase() : null;
+      paramShowHide = (paramShowHide ? paramShowHide : 'SHOW') == 'HIDE' ? true : false;
 	</script>
       <section class="text-content">
          <div class="wrapper">
@@ -218,7 +220,7 @@
          </div>
       </section>
 
-      <section class="text-content">
+      <section class="text-content" id="dxy1">
 		<div class="wrapper">
             <div class="trading-view-holder" style="height: 600px;margin: 0em 0;width: 50%;display: grid;">
                <!-- TradingView Widget BEGIN -->
@@ -313,7 +315,7 @@
          </div>
       </section>
 
-      <section class="text-content">
+      <section class="text-content" id="dxy2">
 		<div class="wrapper">
             <div class="trading-view-holder" style="height: 600px;margin: 0em 0;width: 50%;display: grid;">
                <!-- TradingView Widget BEGIN -->
@@ -720,17 +722,28 @@
          <div style="color: white;">
             Volume <select id="dropdown3" name="dropdown3""></select>
          </div>
+          <div style="color: white;">
+            Show DXY <select id="dropdown4" name="dropdown4""></select>
+         </div>
       </div>
 
       <script>
+         if(paramShowHide){
+            document.getElementById("dxy1").style.display = "none";
+            document.getElementById("dxy2").style.display = "none";
+         }      
+
+
          var options1 = ["1", "5", "15", "30", "1H", "4H", "1D", "1W"];
          var options2 = ["1", "5", "15", "30", "1H", "4H", "1D", "1W"];
          var options3 = ["Yes", "No"];
+         var options4 = ["Show", "Hide"];
    
          function populateDropdowns() {
             var dropdown1 = document.getElementById("dropdown1");
             var dropdown2 = document.getElementById("dropdown2");
             var dropdown3 = document.getElementById("dropdown3");
+            var dropdown4 = document.getElementById("dropdown4");
 
             options1.forEach(function (option) {
                var opt1 = document.createElement("option");
@@ -750,22 +763,31 @@
                opt3.text = option;
                dropdown3.add(opt3);
             });
+            options4.forEach(function (option) {
+               var opt4 = document.createElement("option");
+               opt4.value = option;
+               opt4.text = option;
+               dropdown4.add(opt4);
+            });
    
             dropdown1.value = paramTimeframe1;
             dropdown2.value = paramTimeframe2;
             dropdown3.value = paramVolume ? "No" : "Yes";
+            dropdown4.value = paramShowHide ? "Hide" : "Show";
          }
    
          function combineAndRedirect() {
             var dropdown1 = document.getElementById("dropdown1");
             var dropdown2 = document.getElementById("dropdown2");
             var dropdown3 = document.getElementById("dropdown3");
+            var dropdown4 = document.getElementById("dropdown4");
             var value1 = dropdown1.value;
             var value2 = dropdown2.value;
             var value3 = dropdown3.value;
+            var value4 = dropdown4.value;
 
             var currentUrl = window.location.origin + window.location.pathname;
-            var newUrl = currentUrl+"?"+"timeframe1="+value1+"&timeframe2="+value2+"&volume="+value3;
+            var newUrl = currentUrl+"?"+"timeframe1="+value1+"&timeframe2="+value2+"&volume="+value3+"&showhide="+value4;
             window.location.href = newUrl;         
          }
    
