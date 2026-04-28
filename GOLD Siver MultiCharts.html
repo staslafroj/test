@@ -13,14 +13,17 @@
       paramTimeframe1 = paramTimeframe1 ? paramTimeframe1 : '1';
       var paramTimeframe2 =  params.get('timeframe2') ? params.get('timeframe2').toUpperCase() : null;
       paramTimeframe2 = paramTimeframe2 ? paramTimeframe2 : '15';
+      var paramTimeframe3 =  params.get('timeframe3') ? params.get('timeframe3').toUpperCase() : null;
+      paramTimeframe3 = paramTimeframe3 ? paramTimeframe3 : '30';
       var paramVolume =  params.get('volume') ? params.get('volume').toUpperCase() : null;
       paramVolume = (paramVolume ? paramVolume : 'YES') == 'YES' ? false : true;
       var paramShowHide =  params.get('showhide') ? params.get('showhide').toUpperCase() : null;
       paramShowHide = (paramShowHide ? paramShowHide : 'SHOW') == 'HIDE' ? true : false;
+
 	</script>
       <section class="text-content">
          <div class="wrapper">
-            <div class="trading-view-holder" style="height: 600px;margin: 0em 0;width: 50%;display: grid;">
+            <div class="trading-view-holder column1" style="height: 600px;margin: 0em 0;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
@@ -68,13 +71,61 @@
                </script>
                <!-- TradingView Widget END -->
             </div>
-			<div class="trading-view-holder" style="height: 600px;margin: 0em .5em;width: 50%;display: grid;">
+			<div class="trading-view-holder column2" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
                     "autosize": true,
                     "symbol": "XAUUSD",
                     "interval": paramTimeframe2,
+                    "timezone": "Europe/London",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "withdateranges": true,
+                    "allow_symbol_change": true,
+                    "hideideas": true,
+					"hide_volume": paramVolume,
+					"save_image": false,
+               "studies": [
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 14,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 21,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 35,
+                              source: "close"
+                           }
+                        },
+                     ],
+                    "show_popup_button": true,
+                    "popup_width": "1000",
+                    "popup_height": "650"
+                  });
+               </script>
+               <!-- TradingView Widget END -->
+            </div>
+            <div class="trading-view-holder column3" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
+               <!-- TradingView Widget BEGIN -->
+               <script type="text/javascript">
+                  new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "XAUUSD",
+                    "interval": paramTimeframe3,
                     "timezone": "Europe/London",
                     "theme": "dark",
                     "style": "1",
@@ -117,11 +168,12 @@
                <!-- TradingView Widget END -->
             </div>
          </div>
+         
       </section>
 	  
       <section class="text-content">
          <div class="wrapper">
-            <div class="trading-view-holder" style="height: 600px;margin: 0em 0;width: 50%;display: grid;">
+            <div class="trading-view-holder column1" style="height: 600px;margin: 0em 0;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
@@ -169,13 +221,61 @@
                </script>
                <!-- TradingView Widget END -->
             </div>
-            <div class="trading-view-holder" style="height: 600px;margin: 0em .5em;width: 50%;display: grid;">
+            <div class="trading-view-holder column2" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
                     "autosize": true,
                     "symbol": "XAGUSD",
                     "interval": paramTimeframe2,
+                    "timezone": "Europe/London",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "withdateranges": true,
+                    "allow_symbol_change": true,
+                    "hideideas": true,
+					"hide_volume": paramVolume,
+					"save_image": false,
+               "studies": [
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 14,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 21,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 35,
+                              source: "close"
+                           }
+                        },
+                     ],
+                    "show_popup_button": true,
+                    "popup_width": "1000",
+                    "popup_height": "650"
+                  });
+               </script>
+               <!-- TradingView Widget END -->
+            </div>
+            <div class="trading-view-holder column3" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
+               <!-- TradingView Widget BEGIN -->
+               <script type="text/javascript">
+                  new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "XAGUSD",
+                    "interval": paramTimeframe3,
                     "timezone": "Europe/London",
                     "theme": "dark",
                     "style": "1",
@@ -222,7 +322,7 @@
 
       <section class="text-content" id="dxy1">
 		<div class="wrapper">
-            <div class="trading-view-holder" style="height: 600px;margin: 0em 0;width: 50%;display: grid;">
+            <div class="trading-view-holder column1" style="height: 600px;margin: 0em 0;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
@@ -267,13 +367,58 @@
                </script>
                <!-- TradingView Widget END -->
             </div>
-            <div class="trading-view-holder" style="height: 600px;margin: 0em .5em;width: 50%;display: grid;">
+            <div class="trading-view-holder column2" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
                     "autosize": true,
                     "symbol": "CAPITALCOM:DXY",
                     "interval": paramTimeframe2,
+                    "timezone": "Europe/London",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "withdateranges": true,
+                    "allow_symbol_change": true,
+                    "hideideas": true,
+					"hide_volume": paramVolume,
+					"save_image": false,
+               "studies": [
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 14,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 21,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 35,
+                              source: "close"
+                           }
+                        },
+                     ],
+                     });
+               </script>
+               <!-- TradingView Widget END -->
+            </div>
+            <div class="trading-view-holder column3" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
+               <!-- TradingView Widget BEGIN -->
+               <script type="text/javascript">
+                  new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "CAPITALCOM:DXY",
+                    "interval": paramTimeframe3,
                     "timezone": "Europe/London",
                     "theme": "dark",
                     "style": "1",
@@ -317,7 +462,7 @@
 
       <section class="text-content" id="dxy2">
 		<div class="wrapper">
-            <div class="trading-view-holder" style="height: 600px;margin: 0em 0;width: 50%;display: grid;">
+            <div class="trading-view-holder column1" style="height: 600px;margin: 0em 0;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
@@ -362,7 +507,7 @@
                </script>
                <!-- TradingView Widget END -->
             </div>
-            <div class="trading-view-holder" style="height: 600px;margin: 0em .5em;width: 50%;display: grid;">
+            <div class="trading-view-holder column2" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
@@ -407,12 +552,57 @@
                </script>
                <!-- TradingView Widget END -->
             </div>
+            <div class="trading-view-holder column3" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
+               <!-- TradingView Widget BEGIN -->
+               <script type="text/javascript">
+                  new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "OANDA:XAUXAG",
+                    "interval": paramTimeframe3,
+                    "timezone": "Europe/London",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "withdateranges": true,
+                    "allow_symbol_change": true,
+                    "hideideas": true,
+					"hide_volume": paramVolume,
+					"save_image": false,
+               "studies": [
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 14,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 21,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 35,
+                              source: "close"
+                           }
+                        },
+                     ],
+                     });
+               </script>
+               <!-- TradingView Widget END -->
+            </div>
          </div>
       </section>
 
       <section class="text-content">
          <div class="wrapper">
-            <div class="trading-view-holder" style="height: 600px;margin: 0em 0;width: 50%;display: grid;">
+            <div class="trading-view-holder column1" style="height: 600px;margin: 0em 0;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
@@ -460,7 +650,7 @@
                </script>
                <!-- TradingView Widget END -->
             </div>
-            <div class="trading-view-holder" style="height: 600px;margin: 0em .5em;width: 50%;display: grid;">
+            <div class="trading-view-holder column2" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
@@ -508,12 +698,60 @@
                </script>
                <!-- TradingView Widget END -->
             </div>
+            <div class="trading-view-holder column3" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
+               <!-- TradingView Widget BEGIN -->
+               <script type="text/javascript">
+                  new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "XTIUSD",
+                    "interval": paramTimeframe3,
+                    "timezone": "Europe/London",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "withdateranges": true,
+                    "allow_symbol_change": true,
+                    "hideideas": true,
+					"hide_volume": paramVolume,
+					"save_image": false,
+               "studies": [
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 14,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 21,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 35,
+                              source: "close"
+                           }
+                        },
+                     ],
+                    "show_popup_button": true,
+                    "popup_width": "1000",
+                    "popup_height": "650"
+                  });
+               </script>
+               <!-- TradingView Widget END -->
+            </div>
          </div>
       </section>
 
-	  <section class="text-content" id="dxy3">
+	  <section class="text-content">
          <div class="wrapper">
-            <div class="trading-view-holder" style="height: 600px;margin: 0em 0;width: 50%;display: grid;">
+            <div class="trading-view-holder column1" style="height: 600px;margin: 0em 0;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
@@ -561,13 +799,61 @@
                </script>
                <!-- TradingView Widget END -->
             </div>
-            <div class="trading-view-holder" style="height: 600px;margin: 0em .5em;width: 50%;display: grid;">
+            <div class="trading-view-holder column2" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
                     "autosize": true,
                     "symbol": "XCUUSD",
                     "interval": paramTimeframe2,
+                    "timezone": "Europe/London",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "withdateranges": true,
+                    "allow_symbol_change": true,
+                    "hideideas": true,
+					"hide_volume": paramVolume,
+					"save_image": false,
+               "studies": [
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 14,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 21,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 35,
+                              source: "close"
+                           }
+                        },
+                     ],
+                    "show_popup_button": true,
+                    "popup_width": "1000",
+                    "popup_height": "650"
+                  });
+               </script>
+               <!-- TradingView Widget END -->
+            </div>
+            <div class="trading-view-holder column3" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
+               <!-- TradingView Widget BEGIN -->
+               <script type="text/javascript">
+                  new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "XCUUSD",
+                    "interval": paramTimeframe3,
                     "timezone": "Europe/London",
                     "theme": "dark",
                     "style": "1",
@@ -614,7 +900,7 @@
 		
 	  <section class="text-content">
          <div class="wrapper">
-            <div class="trading-view-holder" style="height: 600px;margin: 0em 0;width: 50%;display: grid;">
+            <div class="trading-view-holder column1" style="height: 600px;margin: 0em 0;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
@@ -662,13 +948,61 @@
                </script>
                <!-- TradingView Widget END -->
             </div>
-            <div class="trading-view-holder" style="height: 600px;margin: 0em .5em;width: 50%;display: grid;">
+            <div class="trading-view-holder column2" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
                <!-- TradingView Widget BEGIN -->
                <script type="text/javascript">
                   new TradingView.widget({
                     "autosize": true,
                     "symbol": "US30",
                     "interval": paramTimeframe2,
+                    "timezone": "Europe/London",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "withdateranges": true,
+                    "allow_symbol_change": true,
+                    "hideideas": true,
+					"hide_volume": paramVolume,
+					"save_image": false,
+               "studies": [
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 14,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 21,
+                              source: "close"
+                           }
+                        },
+                        {
+                           id: "MASimple@tv-basicstudies",
+                           inputs: {
+                              length: 35,
+                              source: "close"
+                           }
+                        },
+                     ],
+                    "show_popup_button": true,
+                    "popup_width": "1000",
+                    "popup_height": "650"
+                  });
+               </script>
+               <!-- TradingView Widget END -->
+            </div>
+            <div class="trading-view-holder column3" style="height: 600px;margin: 0em .5em;width: 33.3%;display: grid;">
+               <!-- TradingView Widget BEGIN -->
+               <script type="text/javascript">
+                  new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "US30",
+                    "interval": paramTimeframe3,
                     "timezone": "Europe/London",
                     "theme": "dark",
                     "style": "1",
@@ -717,6 +1051,7 @@
          <div>
             <select id="dropdown1" name="dropdown1""></select>
             <select id="dropdown2" name="dropdown2""></select>
+            <select id="dropdown22" name="dropdown22""></select>
             <button onclick="combineAndRedirect()">Go</button>
          </div>
          <div style="color: white;">
@@ -728,21 +1063,52 @@
       </div>
 
       <script>
+         if(paramTimeframe1=='0'){
+            const elements = document.getElementsByClassName('column1');
+            for (let el of elements) {
+               el.style.display = "none";
+            }
+         }
+         if(paramTimeframe2=='0'){
+            const elements = document.getElementsByClassName('column2');
+            for (let el of elements) {
+               el.style.display = "none";
+            }
+         }
+         if(paramTimeframe3=='0'){
+            const elements = document.getElementsByClassName('column3');
+            for (let el of elements) {
+               el.style.display = "none";
+            }
+         }
+
+         var widthPerc = 33.3;
+         if(paramTimeframe1=='0'||paramTimeframe2=='0'||paramTimeframe3=='0'){
+            widthPerc = 50;
+         }
+
+         const elements = document.getElementsByClassName('trading-view-holder');
+         for (let el of elements) {
+         el.style.width = widthPerc + '%';
+         }
+
+
          if(paramShowHide){
             document.getElementById("dxy1").style.display = "none";
             document.getElementById("dxy2").style.display = "none";
-			document.getElementById("dxy3").style.display = "none";
          }      
 
 
-         var options1 = ["1", "5", "15", "30", "1H", "4H", "1D", "1W"];
-         var options2 = ["1", "5", "15", "30", "1H", "4H", "1D", "1W"];
+         var options1 = ["0", "1", "5", "15", "30", "1H", "4H", "1D", "1W"];
+         var options2 = ["0", "1", "5", "15", "30", "1H", "4H", "1D", "1W"];
+         var options22 = ["0", "1", "5", "15", "30", "1H", "4H", "1D", "1W"];
          var options3 = ["Yes", "No"];
          var options4 = ["Show", "Hide"];
    
          function populateDropdowns() {
             var dropdown1 = document.getElementById("dropdown1");
             var dropdown2 = document.getElementById("dropdown2");
+            var dropdown22 = document.getElementById("dropdown22");
             var dropdown3 = document.getElementById("dropdown3");
             var dropdown4 = document.getElementById("dropdown4");
 
@@ -757,6 +1123,12 @@
                opt2.value = option;
                opt2.text = option;
                dropdown2.add(opt2);
+            });
+            options22.forEach(function (option) {
+               var opt22 = document.createElement("option");
+               opt22.value = option;
+               opt22.text = option;
+               dropdown22.add(opt22);
             });
             options3.forEach(function (option) {
                var opt3 = document.createElement("option");
@@ -773,6 +1145,7 @@
    
             dropdown1.value = paramTimeframe1;
             dropdown2.value = paramTimeframe2;
+            dropdown22.value = paramTimeframe3;
             dropdown3.value = paramVolume ? "No" : "Yes";
             dropdown4.value = paramShowHide ? "Hide" : "Show";
          }
@@ -780,15 +1153,17 @@
          function combineAndRedirect() {
             var dropdown1 = document.getElementById("dropdown1");
             var dropdown2 = document.getElementById("dropdown2");
+            var dropdown22 = document.getElementById("dropdown22");
             var dropdown3 = document.getElementById("dropdown3");
             var dropdown4 = document.getElementById("dropdown4");
             var value1 = dropdown1.value;
             var value2 = dropdown2.value;
+            var value22 = dropdown22.value;
             var value3 = dropdown3.value;
             var value4 = dropdown4.value;
 
             var currentUrl = window.location.origin + window.location.pathname;
-            var newUrl = currentUrl+"?"+"timeframe1="+value1+"&timeframe2="+value2+"&volume="+value3+"&showhide="+value4;
+            var newUrl = currentUrl+"?"+"timeframe1="+value1+"&timeframe2="+value2+"&timeframe3="+value22+"&volume="+value3+"&showhide="+value4;
             window.location.href = newUrl;         
          }
    
